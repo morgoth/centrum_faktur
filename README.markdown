@@ -22,6 +22,23 @@ end
 
 ## Usage ##
 
+Requests return Array or Hash, where keys are strings.
+When other format than json (default) or yaml is specified, response is not parsed.
+So for xml and pickle requests string is returned.
+
+``` ruby
+CentrumFaktur::Invoice.show("/api/1.0/invoices/1/", :format => :xml)
+```
+
+All params that respond to `strftime` (i.e. Date, Time) will be normalized to format
+required by API, that is: `"YYYY-MM-DD"`
+
+Writing invoice to pdf can be done as follows:
+
+``` ruby
+File.open("my-invoice.pdf", "w") { |file| file.write(CentrumFaktur::Invoice.show("/api/1.0/invoices/1/", :format => :pdf)) }
+```
+
 ### Account ###
 
 Only listing accounts is supported via API
@@ -102,12 +119,6 @@ Displaying invoice:
 
 ``` ruby
 CentrumFaktur::Invoice.show("/api/1.0/invoices/1/")
-```
-
-You can download invoice in PDF format:
-
-``` ruby
-File.open("my-invoice.pdf", "w") { |file| file.write(CentrumFaktur::Invoice.show("/api/1.0/invoices/1/", :format => :pdf)) }
 ```
 
 Creating invoice (check required attributes in API description):
