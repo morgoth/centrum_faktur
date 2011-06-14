@@ -5,7 +5,7 @@ Ruby client for [Centrum Faktur API](http://centrumfaktur.pl/api/)
 ## Configuration ##
 
 ``` ruby
-require "centrum_faktu"
+require "centrum_faktur"
 
 CentrumFaktur.configure do |config|
   config.login     = "your_login"
