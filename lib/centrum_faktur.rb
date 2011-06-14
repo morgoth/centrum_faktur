@@ -1,6 +1,6 @@
 require "centrum_faktur/version"
 require "centrum_faktur/exceptions"
-require "centrum_faktur/request"
+require "centrum_faktur/connection"
 require "centrum_faktur/account"
 require "centrum_faktur/comment"
 require "centrum_faktur/customer"

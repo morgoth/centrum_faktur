@@ -4,7 +4,7 @@ require "uri"
 require "yaml"
 require "multi_json"
 
-class CentrumFaktur::Request
+class CentrumFaktur::Connection
   attr_reader :response, :path
   attr_accessor :login, :password, :subdomain
 
