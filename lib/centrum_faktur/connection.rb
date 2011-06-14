@@ -43,7 +43,7 @@ class CentrumFaktur::Connection
     @path = URI.parse(to).to_s
     request = Net::HTTP::Post.new(@path, headers)
     request.basic_auth(login, password)
-    request.body = params.to_json
+    request.body = MultiJson.encode(params)
     @response = http.request(request)
     self
   end
@@ -52,7 +52,7 @@ class CentrumFaktur::Connection
     @path = URI.parse(to).to_s
     request = Net::HTTP::Put.new(@path, headers)
     request.basic_auth(login, password)
-    request.body = params.to_json
+    request.body = MultiJson.encode(params)
     @response = http.request(request)
     self
   end
@@ -65,6 +65,7 @@ class CentrumFaktur::Connection
     self
   end
 
+  # TOOO: normalize dates
   def inline_params(params)
     params.map { |k, v| "#{k}=#{v}" }.join("&")
   end

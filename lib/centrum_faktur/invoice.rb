@@ -19,6 +19,11 @@ class CentrumFaktur::Invoice
     request.handle_response
   end
 
+  def self.update(invoice_uri, params)
+    request = CentrumFaktur::Connection.new.put(invoice_uri, params)
+    request.handle_response
+  end
+
   def self.destroy(invoice_uri)
     request = CentrumFaktur::Connection.new.delete(invoice_uri)
     request.handle_response

@@ -19,6 +19,11 @@ class CentrumFaktur::Estimate
     request.handle_response
   end
 
+  def self.update(estimate_uri, params)
+    request = CentrumFaktur::Connection.new.put(estimate_uri, params)
+    request.handle_response
+  end
+
   def self.destroy(estimate_uri)
     request = CentrumFaktur::Connection.new.delete(estimate_uri)
     request.handle_response
