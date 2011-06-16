@@ -32,8 +32,8 @@ class CentrumFaktur::Connection
   # TODO: unify
   def get(to, params = {})
     @format = params.fetch(:format, :json)
-    @path = path_with_params(to, params)
-    request = Net::HTTP::Get.new(@path.to_s, headers)
+    @path = CentrumFaktur::Utils.path_with_params(to, params)
+    request = Net::HTTP::Get.new(@path, headers)
     request.basic_auth(login, password)
     @response = http.request(request)
     self
@@ -43,7 +43,7 @@ class CentrumFaktur::Connection
     @path = URI.parse(to).to_s
     request = Net::HTTP::Post.new(@path, headers)
     request.basic_auth(login, password)
-    request.body = MultiJson.encode(normalize_params(params))
+    request.body = MultiJson.encode(CentrumFaktur::Utils.normalize_params(params))
     @response = http.request(request)
     self
   end
@@ -52,7 +52,7 @@ class CentrumFaktur::Connection
     @path = URI.parse(to).to_s
     request = Net::HTTP::Put.new(@path, headers)
     request.basic_auth(login, password)
-    request.body = MultiJson.encode(normalize_params(params))
+    request.body = MultiJson.encode(CentrumFaktur::Utils.normalize_params(params))
     @response = http.request(request)
     self
   end
@@ -63,33 +63,6 @@ class CentrumFaktur::Connection
     request.basic_auth(login, password)
     @response = http.request(request)
     self
-  end
-
-  def inline_params(params)
-    params.map { |k, v| "#{k}=#{v}" }.join("&")
-  end
-
-  def path_with_params(path, params)
-    path = path + "?" + inline_params(params) unless params.empty?
-    URI.parse(path)
-  end
-
-  def normalize_params(params)
-    params.inject({}) do |normalized, (key, value)|
-      normalized[key] =
-        if value.is_a?(Hash)
-         normalize_params(value)
-       elsif value.is_a?(Array)
-         value.map { |v| v.is_a?(Hash) ? normalize_params(v) : normalize_value(v) }
-       else
-         normalize_value(value)
-       end
-      normalized
-    end
-  end
-
-  def normalize_value(value)
-    value.respond_to?(:strftime) ? value.strftime("%Y-%m-%d") : value
   end
 
   def parse_response

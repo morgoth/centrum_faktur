@@ -1,4 +1,5 @@
 require "centrum_faktur/version"
+require "centrum_faktur/utils"
 require "centrum_faktur/exceptions"
 require "centrum_faktur/connection"
 require "centrum_faktur/account"
