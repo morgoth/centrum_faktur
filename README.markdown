@@ -30,14 +30,14 @@ So for xml and pickle requests string is returned.
 CentrumFaktur::Invoice.show("/api/1.0/invoices/1/", :format => :xml)
 ```
 
-All params that respond to `strftime` (i.e. Date, Time) will be normalized to format
-required by API, that is: `"YYYY-MM-DD"`
-
 Writing invoice to pdf can be done as follows:
 
 ``` ruby
 File.open("my-invoice.pdf", "w") { |file| file.write(CentrumFaktur::Invoice.show("/api/1.0/invoices/1/", :format => :pdf)) }
 ```
+
+All params that respond to `strftime` (i.e. Date, Time) will be normalized to format
+required by API, that is: `"YYYY-MM-DD"`
 
 ### Account ###
 
