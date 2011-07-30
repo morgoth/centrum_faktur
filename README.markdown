@@ -147,6 +147,9 @@ Only listing users is supported via API
 CentrumFaktur::User.list
 ```
 
+## Continuous Integration ##
+[![Build Status](https://secure.travis-ci.org/morgoth/centrum_faktur.png)](http://travis-ci.org/morgoth/centrum_faktur)
+
 ## Copyright ##
 
 Created during development for [Ragnarson](http://ragnarson.com/)
