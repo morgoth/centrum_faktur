@@ -1,0 +1,17 @@
+HTTP/1.0 200 OK
+Vary: Authorization
+Content-Type: application/json; charset=utf-8
+Content-Length: 257
+Date: Thu, 16 Jun 2011 19:55:03 GMT
+Server: lighttpd
+X-Cache: MISS from pxy1.mirumee.com
+X-Cache-Lookup: MISS from pxy1.mirumee.com:80
+Via: 1.0 pxy1.mirumee.com:80 (squid/2.6.STABLE21)
+Connection: close
+
+{
+    "date": "2011-06-10",
+    "amount": 99.00,
+    "created": "2012-01-01",
+    "resource_uri": "/api/1.0/payments/99999/"
+}
