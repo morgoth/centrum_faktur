@@ -148,12 +148,7 @@ CentrumFaktur::User.list
 ```
 
 ## Continuous Integration
-
 [![Build Status](https://secure.travis-ci.org/morgoth/centrum_faktur.png)](http://travis-ci.org/morgoth/centrum_faktur)
-
-## Contributors
-
-* [Grzegorz Pawlik](https://github.com/pawlik)
 
 ## Copyright
 
