@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/centrum_faktur/version', __FILE__)
+require File.expand_path("../lib/centrum_faktur/version", __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Wojciech Wnętrzak"]
@@ -12,9 +12,9 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "centrum_faktur"
-  gem.require_paths = ['lib']
+  gem.require_paths = ["lib"]
   gem.version       = CentrumFaktur::VERSION
 
-  gem.add_dependency "multi_json"
+  gem.add_dependency "multi_json", "~> 1.3.2"
   gem.add_development_dependency "fakeweb"
 end

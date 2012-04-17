@@ -43,7 +43,7 @@ class CentrumFaktur::Connection
     @path = URI.parse(to).to_s
     request = Net::HTTP::Post.new(@path, headers)
     request.basic_auth(login, password)
-    request.body = MultiJson.encode(CentrumFaktur::Utils.normalize_params(params))
+    request.body = MultiJson.dump(CentrumFaktur::Utils.normalize_params(params))
     @response = http.request(request)
     self
   end
@@ -68,7 +68,7 @@ class CentrumFaktur::Connection
   def parse_response
     case format.to_sym
     when :json
-      response.body ? MultiJson.decode(response.body) : nil
+      response.body ? MultiJson.load(response.body) : nil
     when :yaml
       response.body ? YAML.load(response.body) : nil
     when :xml, :pickle, :pdf
