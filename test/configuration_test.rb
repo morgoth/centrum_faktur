@@ -1,7 +1,7 @@
 require "helper"
 
 describe "Configuration" do
-  it "should allow to set custom settings" do
+  it "allows to set custom settings" do
     CentrumFaktur.configure do |config|
       config.login     = "john"
       config.password  = "secret"

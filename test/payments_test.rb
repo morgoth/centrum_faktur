@@ -1,6 +1,6 @@
 require "helper"
 
-describe "Payment" do
+describe CentrumFaktur::Payment do
   before do
     CentrumFaktur.configure do |config|
       config.login     = "john"
@@ -9,7 +9,7 @@ describe "Payment" do
     end
   end
 
-  it "should get payment" do
+  it "gets payment" do
     FakeWeb.register_uri(:get,
       "https://john:secret@john.centrumfaktur.pl/api/1.0/invoices/22933/payments",
       :response => fixture("payments.txt")
@@ -23,15 +23,17 @@ describe "Payment" do
     assert_equal expected, response
   end
 
-  it "should create payment" do
+  it "creates payment" do
     FakeWeb.register_uri(:post, "https://john:secret@john.centrumfaktur.pl/api/1.0/invoices/22933/payments", :response => fixture("new_payment.txt"))
     response = CentrumFaktur::Payment.create("/api/1.0/invoices/22933/payments",
       {:date => "2011-06-10", :amount => 99.00}
     )
 
-    expected = {"date"=>"2011-06-10",
-      "amount" => 99.00, "created" => "2012-01-01", "resource_uri"=>"/api/1.0/payments/99999/"
+    expected = {
+      "date" => "2011-06-10",
+      "amount" => 99.00, "created" => "2012-01-01", "resource_uri" => "/api/1.0/payments/99999/"
     }
+
     assert_equal expected, response
   end
 end
