@@ -9,9 +9,9 @@ gem install centrum_faktur
 ```
 ## Usage
 
-Requests return Array or Hash, where keys are strings.
-When other format than json (default) or yaml is specified, response is not parsed.
-So for xml and pickle requests string is returned.
+Request returns Array or Hash, where keys are strings.
+When other format than `json` (default) or `yaml` is specified, response is not parsed.
+So for `xml` and `pickle` requests, string is returned.
 
 ```ruby
 require "centrum_faktur"
