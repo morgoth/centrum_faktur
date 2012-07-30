@@ -2,14 +2,10 @@ require "helper"
 
 describe CentrumFaktur::Connection do
   before do
-    CentrumFaktur.configure do |config|
-      config.login     = "fake"
-      config.password  = "fake"
-      config.subdomain = "fake"
-    end
+    @client = CentrumFaktur::Client.new(login: "john", password: "secret", subdomain: "john")
   end
 
   it "returns url to custom profile" do
-    assert_equal "https://fake.centrumfaktur.pl", CentrumFaktur::Connection.new.uri.to_s
+    assert_equal "https://john.centrumfaktur.pl", CentrumFaktur::Connection.new(@client).uri.to_s
   end
 end

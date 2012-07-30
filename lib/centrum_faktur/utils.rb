@@ -1,3 +1,5 @@
+require "uri"
+
 module CentrumFaktur::Utils
   def inline_params(params)
     params.map { |k, v| "#{k}=#{v}" }.join("&")

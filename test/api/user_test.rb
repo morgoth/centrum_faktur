@@ -1,18 +1,14 @@
 # -*- encoding: utf-8 -*-
 require "helper"
 
-describe CentrumFaktur::User do
+describe CentrumFaktur::API::User do
   before do
-    CentrumFaktur.configure do |config|
-      config.login     = "john"
-      config.password  = "secret"
-      config.subdomain = "john"
-    end
+    @client = CentrumFaktur::Client.new(login: "john", password: "secret", subdomain: "john")
   end
 
   it "returns users list" do
-    FakeWeb.register_uri(:get, "https://john:secret@john.centrumfaktur.pl/api/1.0/users/", :response => fixture("users.txt"))
-    response = CentrumFaktur::User.list
+    FakeWeb.register_uri(:get, "https://john:secret@john.centrumfaktur.pl/api/1.0/users/", response: fixture("users.txt"))
+    response = CentrumFaktur::API::User.new(@client).list
     expected = [{
       "login"        => "morgoth",
       "first_name"   => "Wojciech",
