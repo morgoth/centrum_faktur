@@ -17,15 +17,4 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "multi_json", "~> 1.3.2"
   gem.add_development_dependency "fakeweb"
-
-  gem.post_install_message = %{
-    *************************************************************************
-
-    Interface of version 0.3 of this gem will change with backward incompatibilities.
-
-    If you don't want to update your code, please specify in your Gemfile:
-    gem "centrum_faktur", "~> 0.2.0"
-
-    *************************************************************************
-  }
 end
