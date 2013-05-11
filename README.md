@@ -140,7 +140,7 @@ client.user.list
 ```
 
 ## Continuous Integration
-[![Build Status](https://secure.travis-ci.org/morgoth/centrum_faktur.png)](http://travis-ci.org/morgoth/centrum_faktur)
+[![Build Status](https://api.travis-ci.org/morgoth/centrum_faktur.png)](https://travis-ci.org/morgoth/centrum_faktur)
 
 ## Copyright
 
