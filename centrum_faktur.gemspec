@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = CentrumFaktur::VERSION
 
-  gem.add_dependency "multi_json", "~> 1.3.2"
+  gem.add_dependency "multi_json", "~> 1.3"
   gem.add_development_dependency "fakeweb"
 end
