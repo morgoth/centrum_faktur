@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Ruby client for Centrum Faktur API}
   gem.summary       = %q{Ruby client for Centrum Faktur API}
   gem.homepage      = "https://github.com/morgoth/centrum_faktur"
+  gem.license       = "MIT"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
